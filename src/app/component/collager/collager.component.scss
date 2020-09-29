@@ -1,0 +1,22 @@
+.thumbnail {
+  width: 20px;
+  height: 20px;
+}
+
+#resultContainer {
+  display: flex; padding-right: 5px;
+  border: 1px solid black;
+  width: 250px;
+  margin-bottom: 2px;
+}
+
+#resultContainer>span {
+  padding: 5px;
+}
+
+#resultList {
+  height: 114px;
+  overflow: scroll;
+  width: 300px;
+  margin-top: 20px;
+}
