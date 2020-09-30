@@ -11,6 +11,12 @@ import { CollagerComponent } from './component/collager/collager.component';
 import { NavigationComponent } from './component/common/navigation/navigation.component';
 import { CollagerConfigComponent } from './component/collager-config/collager-config.component';
 import { CollageviewerComponent } from './component/collageviewer/collageviewer.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { ConfigEffects } from './effects/config.effects';
 const config = {
   apiKey: "AIzaSyA2OllHBf8BSMeo-Xc9A9Wij9VYe0tP5jg",
   authDomain: "myfbproject-104c0.firebaseapp.com",
@@ -35,7 +41,10 @@ const config = {
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(config),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([ConfigEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
