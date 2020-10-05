@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+
 export interface Item { name: string; }
 @Component({
   selector: 'app-root',
@@ -11,10 +13,12 @@ export interface Item { name: string; }
 export class AppComponent implements OnInit {
   imageList = [];
   private itemDoc: AngularFirestoreDocument<Item>;
+  count$: Observable<any>;
   item: Observable<Item>;
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private store: Store<any>) {
     this.itemDoc = afs.doc<Item>('items/1');
     this.item = this.itemDoc.valueChanges();
+    this.count$ = store.pipe(select('config'));
     console.log(this.item);
   }
   ngOnInit() {

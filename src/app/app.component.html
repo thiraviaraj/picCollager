@@ -1,14 +1,13 @@
 <app-navigation></app-navigation>
-<!-- <div>
-  {{ (item | async)?.name }}
-</div> -->
-<div style="display: flex">
-<div style="width: 20vw; height: calc(100vh - 100px); overflow: scroll; background-color: cornsilk; padding-left: 10px; padding-top: 10px; padding-bottom: 10px">
-<app-collager-config (onConfigChange)="onConfigChange($event)"></app-collager-config>
 
-</div>
-<div style="width: 80vw; background-color: #f7e8d7; overflow: scroll;">
-  <app-collageviewer [data]="imageList"></app-collageviewer>
-</div>
+<div style="display: flex">
+  <div
+    style="width: 20vw; height: calc(100vh - 100px); overflow: scroll; background-color: cornsilk; padding-left: 10px; padding-top: 10px; padding-bottom: 10px">
+    <app-collager-config (onConfigChange)="onConfigChange($event)"></app-collager-config>
+
+  </div>
+  <div style="width: 80vw; background-color: #f7e8d7; overflow: scroll;">
+    <app-collageviewer [data]="imageList"></app-collageviewer>
+  </div>
 </div>
 <router-outlet></router-outlet>

@@ -1,15 +1,16 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction, props } from "@ngrx/store";
 
 export const loadConfigs = createAction(
-  '[Config] Load Configs'
+  "[Config] Load Configs",
+  props<{ data: any }>()
 );
 
 export const loadConfigsSuccess = createAction(
-  '[Config] Load Configs Success',
+  "[Config] Load Configs Success",
   props<{ data: any }>()
 );
 
 export const loadConfigsFailure = createAction(
-  '[Config] Load Configs Failure',
+  "[Config] Load Configs Failure",
   props<{ error: any }>()
 );

@@ -1,8 +1,10 @@
 <span id="resultContainer">
+  <div>No of files to be processed: {{ (config$ | async)?.fileToUpload.length }}</div>
   <div style="width: 80vw; height: 80vh; overflow: scroll;">
     <ul>
-      <li *ngFor="let item of data; let index = index"><img class="viewImg" [src]="data[index] || 'http://placehold.it/180'" alt="your image" /></li>
+      <li *ngFor="let item of (config$ | async)?.fileToUpload; let index = index"><img class="viewImg"
+          [src]="data[index] || 'http://placehold.it/180'" alt="your image" /></li>
     </ul>
 
   </div>
-  </span>
+</span>
