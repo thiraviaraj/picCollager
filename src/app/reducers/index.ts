@@ -5,6 +5,7 @@ import {
   createSelector,
   MetaReducer
 } from "@ngrx/store";
+import { ConfigActionTypes } from '../actions/config.actions';
 import { environment } from "../../environments/environment";
 
 export interface configState {
@@ -21,9 +22,16 @@ export function configReducer(
   action: any
 ): any {
   switch (action.type) {
-    case "[Config] Load Configs":
+    case ConfigActionTypes.loadFiles:
       state = { ...state };
       state.fileToUpload = action.data;
+      return state;
+    case ConfigActionTypes.unLoadFiles:
+      state = { ...state };
+      console.log(action.data);
+      let fileArr = [...state.fileToUpload];
+      fileArr.splice(action.data, 1);
+      state.fileToUpload = fileArr;
       return state;
     default:
       return state;

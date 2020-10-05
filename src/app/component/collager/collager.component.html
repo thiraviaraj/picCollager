@@ -1,7 +1,7 @@
 <div>
   <input #attachments type="file" id="file" (change)="handleFileInput($event)" multiple>
   <div id="resultList">
-    <span id="resultContainer" *ngFor="let item of fileToUpload; let index = index">
+    <span id="resultContainer" *ngFor="let item of (config$ | async)?.fileToUpload; let index = index">
       <span>
           <img class="thumbnail" [src]="imageList[index] || 'http://placehold.it/180'" alt="your image" />
       </span>
