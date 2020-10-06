@@ -1,5 +1,6 @@
 <div style="display:flex; align-items: center; background: bisque;">
-  <h3 style="flex-basis: 80%; font-family: fantasy; ">Collage Maker</h3>
+
+  <h3 style="flex-basis: 80%; font-family: fantasy; ">Collage Maker {{(config$ | async)?.fileToUpload}}</h3>
   <div style="display: flex" *ngIf="auth.user | async as user; else showLogin">
     <span style="flex-basis: 90%;">Hello {{ user.displayName }}! </span>
     <button style="flex-basis: 10%;" (click)="logout()"> Logout</button>
